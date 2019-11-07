@@ -12,6 +12,8 @@
     <string name="exit">EXIT</string>
 
     <string name="judul">DATA SISWA</string>
+    <string name="email">Email</string>
+    <string name="kemail">Kirim Email</string>
     <string name="nis">Nis</string>
     <string name="nama">Nama</string>
     <string name="alamat">Alamat</string>

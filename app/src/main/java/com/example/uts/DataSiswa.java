@@ -20,7 +20,8 @@ public class DataSiswa extends AppCompatActivity {
     private EditText alamatInput;
     private EditText handphoneInput;
     private EditText keteranganInput;
-    String nis, nama, alamat, handphone, keterangan;
+    private EditText emailInput;
+    String nis, nama, alamat, handphone, keterangan, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class DataSiswa extends AppCompatActivity {
         alamatInput = findViewById(R.id.input_alamat);
         handphoneInput = findViewById(R.id.input_handphone);
         keteranganInput = findViewById(R.id.input_keterangan);
+        emailInput = findViewById(R.id.input_email);
 
     }
 
@@ -66,4 +68,21 @@ public class DataSiswa extends AppCompatActivity {
         alertDialog.show();
     }
 
+    public void handleKirimemail(View view) {
+        nis = nisInput.getText().toString();
+        nama = namaInput.getText().toString();
+        alamat = alamatInput.getText().toString();
+        handphone = handphoneInput.getText().toString();
+        keterangan = keteranganInput.getText().toString();
+        email = emailInput.getText().toString();
+        String to = emailInput.getText().toString();
+
+        Intent email = new Intent(Intent.ACTION_SEND);
+        email.putExtra(Intent.EXTRA_EMAIL, new String[]{ to});
+        email.putExtra(Intent.EXTRA_SUBJECT, "Nama : " + nama);
+        email.putExtra(Intent.EXTRA_TEXT, "Nis : " + nis + "\nNama : " + nama + "\nAlamat : "+ alamat +"\nHandphone : "+handphone +"\nKeterangan : "+keterangan);
+        email.setType("message/rfc822");
+
+        startActivity(Intent.createChooser(email, "Choose an Email client :"));
     }
+}
